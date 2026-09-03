@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { AlertCircle } from "lucide-react";
+import { asset } from "@/lib/asset";
 
 const PROBLEMES = [
   { x: 50, y: 8,  label: "Bandeau bleu saturé",       desc: "Une couleur agressive qui domine sans hiérarchie." },
@@ -61,7 +62,7 @@ export default function AuditSlide() {
         className="relative h-full min-h-0 rounded-2xl overflow-hidden border border-onas-ink/10 shadow-[0_24px_60px_-20px_rgba(13,13,13,0.35)] bg-onas-surface"
       >
         <Image
-          src="/images/audit/onas-sn-actuel.png"
+          src={asset("/images/audit/onas-sn-actuel.png")}
           alt="Capture du site onas.sn actuel"
           fill
           className="object-cover object-top"

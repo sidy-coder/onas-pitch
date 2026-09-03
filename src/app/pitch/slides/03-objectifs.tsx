@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { BookOpen, Compass, Map, Shield, Sparkles } from "lucide-react";
+import { asset } from "@/lib/asset";
 
 const OBJECTIFS = [
   {
@@ -42,7 +43,7 @@ export default function ObjectifsSlide() {
     <div className="relative w-full h-full overflow-hidden bg-white px-8 lg:px-20 pt-24 lg:pt-28 pb-20 lg:pb-24">
       <div className="absolute inset-y-0 right-0 w-[68%] opacity-[0.12] pointer-events-none select-none">
         <Image
-          src="/images/decor/motif-beige-cote-droit.svg"
+          src={asset("/images/decor/motif-beige-cote-droit.svg")}
           alt=""
           fill
           sizes="68vw"

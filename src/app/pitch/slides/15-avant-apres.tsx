@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { MoveHorizontal } from "lucide-react";
 import BeforeAfter from "../components/BeforeAfter";
 import { siteUrl } from "../lib/site";
+import { asset } from "@/lib/asset";
 
 export default function AvantApresSlide() {
   return (
@@ -42,7 +43,7 @@ export default function AvantApresSlide() {
         className="flex-1 min-h-0 max-w-[1320px] mx-auto w-full"
       >
         <BeforeAfter
-          beforeSrc="/images/audit/onas-sn-actuel.png"
+          beforeSrc={asset("/images/audit/onas-sn-actuel.png")}
           afterEmbed={siteUrl("/")}
           beforeLabel="Site actuel"
           afterLabel="Nouveau site · live"

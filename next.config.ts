@@ -14,6 +14,9 @@ const basePath = process.env.BASE_PATH ?? "";
 const nextConfig: NextConfig = {
   output: "export",
   basePath: basePath || undefined,
+  // Répercutée côté navigateur pour `src/lib/asset.ts` : `basePath` ne préfixe
+  // PAS le `src` des images non optimisées, il faut donc le faire à la main.
+  env: { NEXT_PUBLIC_BASE_PATH: basePath },
   // `output: "export"` n'embarque pas le serveur d'optimisation d'images.
   images: { unoptimized: true },
   // Chaque slide devient un dossier avec son index.html → servable tel quel.

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 import type { SlideTone } from "../lib/slides";
 import { TOTAL_SLIDES } from "../lib/slides";
+import { asset } from "@/lib/asset";
 
 type Props = {
   children: ReactNode;
@@ -43,7 +44,7 @@ export default function SlideShell({
       {/* ── Logo ONAS (top-left) ─────────────────────────────── */}
       <div className="absolute top-6 left-6 lg:top-8 lg:left-10 z-40 pointer-events-none">
         <Image
-          src={isDark ? "/images/logos/onas-logo-white.png" : "/images/logos/onas-logo-color.png"}
+          src={isDark ? asset("/images/logos/onas-logo-white.png") : asset("/images/logos/onas-logo-color.png")}
           alt="ONAS"
           width={56}
           height={56}
@@ -59,8 +60,8 @@ export default function SlideShell({
         </span>
         <Image
           src={isDark
-            ? "/images/logos/levell-logo-dark.png"
-            : "/images/logos/levell-logo-light.png"}
+            ? asset("/images/logos/levell-logo-dark.png")
+            : asset("/images/logos/levell-logo-light.png")}
           alt="Levell"
           width={64}
           height={20}

@@ -3,6 +3,7 @@
 import { Droplets, Palette, Type } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { asset } from "@/lib/asset";
 
 const COLORS = [
   { name: "Orange", className: "bg-onas-orange" },
@@ -12,10 +13,10 @@ const COLORS = [
 ];
 
 const MOTIFS = [
-  "/images/decor/goutte-orange-onas.svg",
-  "/images/decor/goutte-bleu-onas.svg",
-  "/images/decor/goutte-marron-onas.svg",
-  "/images/decor/groupe-motif-trois-goutte-style2-onas.svg",
+  asset("/images/decor/goutte-orange-onas.svg"),
+  asset("/images/decor/goutte-bleu-onas.svg"),
+  asset("/images/decor/goutte-marron-onas.svg"),
+  asset("/images/decor/groupe-motif-trois-goutte-style2-onas.svg"),
 ];
 
 const PRINCIPLES = [
@@ -44,7 +45,7 @@ export default function CharteSlide() {
     <div className="relative w-full h-full overflow-hidden bg-white px-8 lg:px-20 pt-24 lg:pt-28 pb-20 lg:pb-24">
       <div className="absolute inset-y-0 right-0 w-[68%] opacity-[0.13] pointer-events-none select-none">
         <Image
-          src="/images/decor/motif-beige-cote-droit.svg"
+          src={asset("/images/decor/motif-beige-cote-droit.svg")}
           alt=""
           fill
           sizes="68vw"

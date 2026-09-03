@@ -2,13 +2,14 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { asset } from "@/lib/asset";
 
 export default function QuestionSlide() {
   return (
     <div className="relative w-full h-full overflow-hidden">
       {/* ── Photo full bleed ─────────────────────────────────── */}
       <Image
-        src="/images/photos/ONAS EXPOSURE 5.png"
+        src={asset("/images/photos/ONAS EXPOSURE 5.png")}
         alt=""
         fill
         priority
@@ -23,7 +24,7 @@ export default function QuestionSlide() {
 
       {/* ── Motif décoratif ──────────────────────────────────── */}
       <Image
-        src="/images/decor/groupe-motif-trois-goutte-style3-onas.svg"
+        src={asset("/images/decor/groupe-motif-trois-goutte-style3-onas.svg")}
         alt=""
         width={500}
         height={500}

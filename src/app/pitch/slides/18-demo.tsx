@@ -5,13 +5,14 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { siteUrl } from "../lib/site";
 import { ArrowUpRight, RotateCcw } from "lucide-react";
+import { asset } from "@/lib/asset";
 
 export default function DemoSlide() {
   return (
     <div className="relative w-full h-full overflow-hidden bg-white px-8 lg:px-20 pt-24 lg:pt-28 pb-20 lg:pb-24">
       <div className="absolute inset-y-0 right-0 w-[74%] opacity-[0.14] pointer-events-none select-none">
         <Image
-          src="/images/decor/motif-beige-cote-droit.svg"
+          src={asset("/images/decor/motif-beige-cote-droit.svg")}
           alt=""
           fill
           sizes="74vw"

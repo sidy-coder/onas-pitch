@@ -3,13 +3,14 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { asset } from "@/lib/asset";
 
 export default function IntroSlide() {
   return (
     <div className="relative w-full h-full">
       {/* ── Photo full bleed ─────────────────────────────────── */}
       <Image
-        src="/images/photos/30-ans-ONAS.png"
+        src={asset("/images/photos/30-ans-ONAS.png")}
         alt=""
         fill
         priority
@@ -24,7 +25,7 @@ export default function IntroSlide() {
 
       {/* ── Motif décoratif ──────────────────────────────────── */}
       <Image
-        src="/images/decor/groupe-motif-trois-goutte-style2-onas.svg"
+        src={asset("/images/decor/groupe-motif-trois-goutte-style2-onas.svg")}
         alt=""
         width={620}
         height={620}

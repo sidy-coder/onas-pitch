@@ -9,6 +9,7 @@ import type { Variants } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { siteUrl } from "@/app/pitch/lib/site";
 import SplitText from "@/components/ui/SplitText";
+import { asset } from "@/lib/asset";
 
 /* ── Icônes réseaux sociaux ───────────────────────────────── */
 const IconFacebook = () => (
@@ -340,7 +341,7 @@ export default function Footer() {
             >
               <div className="relative w-14 h-14 flex-shrink-0">
                 <Image
-                  src="/images/logos/onas-logo-white.png"
+                  src={asset("/images/logos/onas-logo-white.png")}
                   alt="ONAS"
                   fill
                   sizes="56px"

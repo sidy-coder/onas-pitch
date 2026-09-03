@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Jost } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import { asset } from "@/lib/asset";
 
 /**
  * Les deux polices de la charte ONAS.
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
   title: "Présentation — Refonte ONAS.SN",
   description:
     "Présentation interactive de la refonte du site de l'Office National de l'Assainissement du Sénégal.",
-  icons: { icon: "/Icone-site-web-onas.png" },
+  icons: { icon: asset("/Icone-site-web-onas.png") },
   // Document de travail : il n'a rien à faire dans un index de moteur de recherche.
   robots: { index: false, follow: false },
 };
