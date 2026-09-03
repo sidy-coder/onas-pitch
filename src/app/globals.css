@@ -1,0 +1,289 @@
+@import "tailwindcss";
+
+/* ── ONAS Design System ──────────────────────────────────── */
+
+@theme inline {
+  --color-onas-blue:        #0266AE;
+  --color-onas-blue-dark:   #014d82;
+  --color-onas-blue-deep:   #002AE8;
+  --color-onas-blue-light:  #5CA0F8;
+  --color-onas-orange:      #B45326;
+  --color-onas-orange-dk:   #8c3e1c;
+  --color-onas-zinc:        #ABABAB;
+  --color-onas-lutin:       #8E7D74;
+  --color-onas-dark:        #0d0d0d;
+  --color-onas-warm:        #120a04;
+  --color-onas-warm-md:     #1e0e04;
+  --color-onas-surface:     #F4F6FA;
+  --color-onas-ink:         #1e2533;
+  --color-onas-ink-soft:    #333333;
+  --color-onas-warm-dk:     #0d0804;
+
+  --font-condensed: var(--font-jost), "Arial Narrow", sans-serif;
+  --font-title:     var(--font-din-condensed), "Arial Narrow", sans-serif;
+  --font-body:      var(--font-jost), Arial, sans-serif;
+}
+
+/* Base ────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-onas-ink);
+  background: #fff;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ONAS Motif repeating pattern ────────────────────────────── */
+.motif-bg {
+  background-image: url('/images/decor/motif.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+/* Section label with left bar ─────────────────────────────── */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-onas-orange);
+}
+.section-label::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: var(--color-onas-orange);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* Focus-visible ring — WCAG AA ────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-onas-orange);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Custom scrollbar ────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #F4F6FA; }
+::-webkit-scrollbar-thumb { background: #0266AE; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #014d82; }
+
+/* Swiper pagination ───────────────────────────────────────── */
+.swiper-pagination-bullet {
+  background: rgba(255,255,255,0.5) !important;
+  opacity: 1 !important;
+}
+.swiper-pagination-bullet-active {
+  background: var(--color-onas-orange) !important;
+  transform: scale(1.2);
+}
+
+/* Mega menu transition ────────────────────────────────────── */
+.mega-menu {
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+}
+
+/* Hover underline slide ────────────────────────────────────  */
+.nav-link-underline {
+  position: relative;
+}
+.nav-link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 1rem;
+  right: 1rem;
+  height: 3px;
+  background: var(--color-onas-orange);
+  border-radius: 2px 2px 0 0;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s ease;
+}
+.nav-link-underline:hover::after,
+.nav-link-underline.active::after {
+  transform: scaleX(1);
+}
+
+/* SVG background glow animations ─────────────────────────── */
+@keyframes glowBlue {
+  0%, 100% { filter: drop-shadow(0 0 12px rgba(2, 102, 174, 0.18)); }
+  50%       { filter: drop-shadow(0 0 36px rgba(2, 102, 174, 0.38)); }
+}
+@keyframes glowOrange {
+  0%, 100% { filter: drop-shadow(0 0 10px rgba(180, 83, 38, 0.14)); }
+  50%       { filter: drop-shadow(0 0 30px rgba(180, 83, 38, 0.28)); }
+}
+.svg-glow-blue   { animation: glowBlue   6s ease-in-out infinite; }
+.svg-glow-orange { animation: glowOrange 6s ease-in-out infinite; }
+
+/* ── Pins lumineux carte projets ─────────────────────────── */
+@keyframes onasPinPulse {
+  0%   { transform: translate(-50%, -50%) scale(0.6);  opacity: 0.55; }
+  80%  { transform: translate(-50%, -50%) scale(2.6);  opacity: 0;    }
+  100% { transform: translate(-50%, -50%) scale(2.6);  opacity: 0;    }
+}
+/* Le conteneur est large (46px) pour laisser de la place au halo qui se déploie */
+.onas-map-pin {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+.onas-map-pin-dot {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: currentColor;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.55);
+  transition: transform 0.25s ease;
+  z-index: 3;
+}
+.onas-map-pin-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: currentColor;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0.55;
+  z-index: 1;
+  animation: onasPinPulse 2.4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+.onas-map-pin-ring--delayed {
+  animation-delay: 1.2s;
+  z-index: 2;
+}
+.onas-map-pin-label {
+  position: absolute;
+  bottom: calc(100% - 9px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(13,13,13,0.92);
+  color: #fff;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 4px 9px;
+  border-radius: 6px;
+  white-space: nowrap;
+  border: 1px solid rgba(255,255,255,0.12);
+  pointer-events: none;
+  transition: transform 0.25s ease, background 0.25s ease;
+  z-index: 4;
+}
+.onas-map-pin-label::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: rgba(13,13,13,0.92);
+}
+.onas-map-pin.is-active .onas-map-pin-dot,
+.onas-map-pin:hover .onas-map-pin-dot {
+  transform: scale(1.35);
+}
+/* Atténuation des pins des projets non-actifs */
+.onas-map-pin.is-dimmed {
+  opacity: 0.08;
+  transition: opacity 0.4s ease;
+}
+.onas-map-pin.is-dimmed .onas-map-pin-ring {
+  animation-play-state: paused;
+}
+.onas-map-pin.is-dimmed .onas-map-pin-label {
+  opacity: 0.55;
+}
+.onas-map-pin.is-active .onas-map-pin-label,
+.onas-map-pin:hover .onas-map-pin-label {
+  background: var(--color-onas-orange);
+  border-color: var(--color-onas-orange);
+  transform: translateX(-50%) translateY(-2px);
+}
+.onas-map-pin.is-active .onas-map-pin-label::after,
+.onas-map-pin:hover .onas-map-pin-label::after {
+  border-top-color: var(--color-onas-orange);
+}
+
+/* Leaflet dark theme overrides ───────────────────────────── */
+.onas-leaflet .leaflet-control-zoom a {
+  background: rgba(13,13,13,0.85) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  backdrop-filter: blur(8px);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.onas-leaflet .leaflet-control-zoom a:hover {
+  background: var(--color-onas-orange) !important;
+  border-color: var(--color-onas-orange) !important;
+}
+.onas-leaflet .leaflet-control-zoom {
+  border: none !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+/* ── Repli dégradés : navigateurs sans interpolation « in oklab » ──
+ *
+ * Tailwind v4 compile toute classe `bg-gradient-to-*` en
+ *   `--tw-gradient-position: to top in oklab`
+ *   `background-image: linear-gradient(var(--tw-gradient-stops))`
+ * et n'émet AUCUN repli pour le fragment `in oklab`.
+ *
+ * Cette syntaxe n'existe qu'à partir de Chrome/Edge 111, Safari 16.2 et
+ * surtout Firefox 128. En dessous, la valeur du `linear-gradient()` est
+ * jugée invalide EN ENTIER : le navigateur ignore la déclaration et le
+ * dégradé disparaît purement et simplement — pas de couleur de repli, pas
+ * d'erreur visible. Sur le carrousel d'accueil, cela retire le voile bleu
+ * qui rend le titre blanc lisible par-dessus la photo.
+ *
+ * Cas typique : Firefox ESR 115 (parc administratif), qui gère déjà
+ * `color-mix()` — le reste du site s'affiche normalement, seuls les
+ * dégradés manquent, d'où un symptôme isolé et déroutant.
+ *
+ * Le repli redéfinit la seule variable fautive, sans `in oklab` :
+ * l'interpolation retombe en sRVB, différence imperceptible ici.
+ * `--tw-gradient-via-stops` réutilisant cette même variable, les dégradés
+ * à trois arrêts (`via-…`) sont couverts eux aussi.
+ *
+ * Hors `@layer` : les utilitaires Tailwind vivent dans `@layer utilities`,
+ * et toute règle sans couche l'emporte sur une règle en couche, à
+ * spécificité égale. À conserver tant que Tailwind n'émettra pas son
+ * propre repli.
+ */
+@supports not (background-image: linear-gradient(to top in oklab, red, blue)) {
+  .bg-gradient-to-t  { --tw-gradient-position: to top; }
+  .bg-gradient-to-tr { --tw-gradient-position: to top right; }
+  .bg-gradient-to-r  { --tw-gradient-position: to right; }
+  .bg-gradient-to-br { --tw-gradient-position: to bottom right; }
+  .bg-gradient-to-b  { --tw-gradient-position: to bottom; }
+  .bg-gradient-to-bl { --tw-gradient-position: to bottom left; }
+  .bg-gradient-to-l  { --tw-gradient-position: to left; }
+  .bg-gradient-to-tl { --tw-gradient-position: to top left; }
+}
