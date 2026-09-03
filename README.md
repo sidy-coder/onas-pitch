@@ -10,6 +10,8 @@ Construite avec **Next.js 16** (App Router), **Tailwind CSS 4** et
 **framer-motion**. Le site produit est entièrement statique : aucune base de
 données, aucune API, aucun serveur à maintenir.
 
+**▶ À voir en ligne : https://sidy-coder.github.io/onas-pitch/**
+
 ---
 
 ## Démarrer
@@ -236,18 +238,23 @@ vit sous `https://<compte>.github.io/onas-pitch/`. Voir ci-dessous.
 Le build produit un dossier `out/` d'HTML, de CSS et de JS. N'importe quel
 hébergement de fichiers statiques suffit.
 
-### GitHub Pages
+### GitHub Pages — déjà en place
+
+Rien à faire : [`.github/workflows/pages.yml`](.github/workflows/pages.yml)
+reconstruit et republie à chaque push sur `main`. Le résultat est sur
+**https://sidy-coder.github.io/onas-pitch/**.
+
+Pour reproduire la même chose à la main, ou sur un autre compte :
 
 ```bash
 BASE_PATH=/onas-pitch npm run build
-touch out/.nojekyll     # sinon Pages ignore le dossier _next/
+touch out/.nojekyll     # sinon Pages passe la sortie à Jekyll, qui ignore _next/
 ```
 
-Publiez `out/` sur la branche `gh-pages`, ou laissez une action s'en charger.
-`BASE_PATH` est indispensable : sans lui, la page se charge mais tous les liens
-et visuels pointent à la racine du domaine.
-
-Sur un domaine personnalisé à la racine, **ne définissez pas** `BASE_PATH`.
+`BASE_PATH` est indispensable dès que le site vit dans un sous-chemin : sans lui
+la page se charge, mais tous les liens et visuels pointent une case trop haut —
+et rien n'échoue au build, la panne est silencieuse. Sur un domaine personnalisé
+à la racine, **ne le définissez pas**.
 
 ### Netlify, Vercel, Cloudflare Pages
 
@@ -319,4 +326,9 @@ fait automatiquement.
 
 Contenus, marque, visuels et charte ONAS : propriété de l'**Office National de
 l'Assainissement du Sénégal**. Conception et développement : **Levell**
-([levell.agency](https://levell.agency)). Dépôt privé, usage interne.
+([levell.agency](https://levell.agency)).
+
+Le dépôt est public pour que la présentation soit consultable par lien, mais son
+contenu n'est pas libre de droits : ni les visuels, ni les logos, ni la
+typographie des titres ne sont réutilisables hors de ce projet. La présentation
+reste par ailleurs en `noindex` — partageable, non référencée.
